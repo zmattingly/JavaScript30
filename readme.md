@@ -1,6 +1,7 @@
 ![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
+### :page_facing_up: :arrow_upper_right: @zmattingly's fork to track progress on these mini-projects day to day.
 
 Starter Files + Completed solutions for the JavaScript 30 Day Challenge.
 
