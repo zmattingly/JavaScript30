@@ -58,7 +58,28 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script type="text/javascript">
-  
+  // Element/Event Handling setup
+  window.addEventListener('keydown', playAudio);
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  // The Functional Workhorses (or maybe Less Than 10 Lines = Workponies?)
+  function playAudio(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    if (!audio) return; // Early no-op if keydown key does not match an <audio> element
+
+    audio.currentTime = 0; // Put your thing down, flip it and reverse it (restart audio clip each appropriate keydown event)
+    audio.play();
+    key.classList.add('playing');
+  }
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // Early no-op so we only trigger during the CSS scale transformation between standard '.key' and '.key, .playing'
+    this.classList.remove('playing');
+  }
 </script>
 
 
